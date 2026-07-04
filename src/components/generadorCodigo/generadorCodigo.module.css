@@ -1,0 +1,11 @@
+.btnReady {
+  width: 100%;
+  background: linear-gradient(90deg, #4a12a9, #a14371);
+  height: 35px;
+  border-radius: 50px;
+  border: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: white;
+  font-weight: 600;
+}

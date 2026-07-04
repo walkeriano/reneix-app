@@ -1,0 +1,72 @@
+import styles from "./controlAcces.module.css";
+import Image from "next/image";
+import React, { useState, useContext } from "react";
+import { useRouter } from "next/navigation";
+import AuthContext from "@/state/auth/auth-context";
+
+export default function ControlAcces() {
+  const { login } = useContext(AuthContext);
+
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      await login(formData.email, formData.password);
+
+      router.push("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  return (
+    <section className={styles.containerAcces}>
+      <Image src="/logo-re.png" width={160} height={160} alt="logo-fanixera" />
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Ingresar email..."
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Código acceso..."
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <button type="submit" className={styles.sendDatos}>
+          Acceder
+          <Image src="/send-white.svg" width={20} height={20} alt="icon-menu" />
+        </button>
+      </form>
+    </section>
+  );
+}

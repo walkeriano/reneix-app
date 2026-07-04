@@ -1,0 +1,54 @@
+.containerLoader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 55px;
+  position: relative;
+  background: white;
+}
+
+.containerLoader h1 {
+  font-size: 0.6rem;
+  text-align: center;
+  width: 75%;
+  color: white;
+  letter-spacing: 5px;
+  position: absolute;
+  top: 15px;
+}
+
+.containerLoader img {
+  margin-top: -50px;
+}
+
+.loader {
+  height: 7px;
+  width: 150px;
+  --c: no-repeat linear-gradient(#b62fff 0 0);
+  background: var(--c), var(--c), white;
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+  border: 1px solid white;
+  border-radius: 50px;
+}
+
+@keyframes l16 {
+  0% {
+    background-position:
+      -150% 0,
+      -150% 0;
+  }
+  66% {
+    background-position:
+      250% 0,
+      -150% 0;
+  }
+  100% {
+    background-position:
+      250% 0,
+      250% 0;
+  }
+}
