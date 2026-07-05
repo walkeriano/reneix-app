@@ -1,0 +1,133 @@
+.planningEvents {
+  border: 1px solid red;
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.planDetail {
+  width: 90%;
+  background-color: white;
+  height: auto;
+  padding: 20px 0px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.planTitle {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.planTitle p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.planTitle h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: blue;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+
+.planPatients {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.planPatients p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.planPatientsList {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.planItem {
+  border: 1px solid grey;
+  min-width: 60%;
+  padding-right: 20px;
+  height: 45px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.planItem img {
+  border-radius: 50%;
+}
+
+.planItemInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  border: 1px solid red;
+}
+
+.planItemInfo h4 {
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: blue;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.planItemInfo p {
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+.planDates{
+    width: 90%;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.planDetail{
+    border: 1px solid red;
+}

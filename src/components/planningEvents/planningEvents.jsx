@@ -1,4 +1,6 @@
+import styles from "./planningEvents.module.css";
 import usePlanningList from "@/hooks/usePlanningList";
+import Image from "next/image";
 
 export default function PlanningEvents() {
   const { plans, loading, error } = usePlanningList();
@@ -12,22 +14,53 @@ export default function PlanningEvents() {
   }
 
   return (
-    <section>
+    <section className={styles.planningEvents}>
       {plans.map((plan) => (
-        <article key={plan.id}>
-          <h3>{plan.title}</h3>
-
-          <p>
-            Inicio:
-            {" "}
-            {new Date(plan.startDate).toLocaleString()}
-          </p>
-
-          <p>
-            Fin:
-            {" "}
-            {new Date(plan.endDate).toLocaleString()}
-          </p>
+        <article className={styles.planDetail} key={plan.id}>
+          <section className={styles.planTitle}>
+            <p>Nombre Sesión</p>
+            <h3>{plan.title}</h3>
+          </section>
+          <section className={styles.planPatients}>
+            <p>Pacientes Vinculados</p>
+            <section className={styles.planPatientsList}>
+              <div className={styles.planItem}>
+                <Image src="/image-angels.png" alt="Paciente 1" width={45} height={45} />
+                <div className={styles.planItemInfo}>
+                  <h4>Nombre paciente</h4>
+                  <p>Correo paciente</p>
+                </div>
+              </div>
+              <div className={styles.planItem}>
+                <Image src="/image-angels.png" alt="Paciente 1" width={45} height={45} />
+                <div className={styles.planItemInfo}>
+                  <h4>Nombre paciente</h4>
+                  <p>Correo paciente</p>
+                </div>
+              </div>
+              <div className={styles.planItem}>
+                <Image src="/image-angels.png" alt="Paciente 1" width={45} height={45} />
+                <div className={styles.planItemInfo}>
+                  <h4>Nombre paciente</h4>
+                  <p>Correo paciente</p>
+                </div>
+              </div>
+            </section>
+          </section>
+          <section className={styles.planDates}>
+            <div className={styles.planInfo}>
+              <p>
+                Inicio:
+                {new Date(plan.startDate).toLocaleString()}
+              </p>
+            </div>
+            <div className={styles.planInfo}>
+              <p>
+                Fin:
+                {new Date(plan.endDate).toLocaleString()}
+              </p>
+            </div>
+          </section>
         </article>
       ))}
     </section>
