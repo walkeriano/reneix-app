@@ -28,7 +28,7 @@ export default function Header({ user }) {
       <section className={styles.navContainer}>
         <button>
           <Image
-            src={user?.imagenPerfil}
+            src={user?.imagenPerfil || "/default-profile.png"}
             width={50}
             height={50}
             alt="icon-menu"
@@ -40,8 +40,15 @@ export default function Header({ user }) {
         {showClosing && (
           <section className={styles.containerClosing}>
             <h3>¿Seguro qué deseas cerrar sesión?</h3>
-            <div className={styles.btnClosing} onClick={() => setShowClosing(false)}>Volver</div>
-            <div className={styles.btnClosing} onClick={handleLogout}>Cerrar sesión</div>
+            <div
+              className={styles.btnClosing}
+              onClick={() => setShowClosing(false)}
+            >
+              Volver
+            </div>
+            <div className={styles.btnClosing} onClick={handleLogout}>
+              Cerrar sesión
+            </div>
           </section>
         )}
       </section>
