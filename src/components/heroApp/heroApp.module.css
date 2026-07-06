@@ -20,6 +20,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  animation: fadeInMenuImg 1s ease-out;
+}
+
+@keyframes fadeInMenuImg {
+  from {
+    filter: blur(15px);
+  }
+  to {
+    filter: blur(0);
+  }
 }
 
 .activeMentoria {

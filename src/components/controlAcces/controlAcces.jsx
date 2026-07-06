@@ -52,7 +52,7 @@ export default function ControlAcces() {
 
   return (
     <section className={styles.containerAcces}>
-      <Image src="/logo-re.png" width={160} height={160} alt="logo-fanixera" />
+      <Image src="/logo-re.png" width={170} height={170} alt="logo-fanixera" />
       <section className={styles.titleSection}>
         <h2>Ingresar credenciales</h2>
         <div className={styles.logoShield}>
