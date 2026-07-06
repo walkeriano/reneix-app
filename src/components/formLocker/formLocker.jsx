@@ -3,7 +3,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useLocker } from "@/hooks/useLocker";
 
-export default function FormLocker() {
+export default function FormLocker({
+  selectedUsers,
+  setSelectedUsers,
+}) {
   const { createLocker, loading, error } = useLocker();
 
   const [formData, setFormData] = useState({
@@ -24,16 +27,20 @@ export default function FormLocker() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const result = await createLocker(formData);
+    if (!selectedUsers.length) {
+      alert("Selecciona al menos un usuario.");
+      return;
+    }
+
+    const result = await createLocker(formData, selectedUsers);
 
     if (result.success) {
-      console.log("Documento creado:", result.id);
-
       setFormData({
         url: "",
-
         mensaje: "",
       });
+      setSelectedUsers([]);
+      console.log("Publicación creada");
     }
   };
 
@@ -43,7 +50,7 @@ export default function FormLocker() {
         <p>Datos de publicación</p>
         <Image src="/arrow-bottom.svg" width={10} height={12} alt="icon-menu" />
       </section>
-      <form  onSubmit={handleSubmit} className={styles.formBox}>
+      <form onSubmit={handleSubmit} className={styles.formBox}>
         <label htmlFor="">
           <input
             type="url"
@@ -65,7 +72,7 @@ export default function FormLocker() {
           />
           <Image src="/message.svg" alt="img-perfil" width={20} height={20} />
         </label>
-        <button  type="submit" disabled={loading}>
+        <button type="submit" disabled={loading}>
           {loading ? "Cargando..." : "Publicar"}
           <Image src="/send.svg" width={20} height={20} alt="icon-menu" />
         </button>
