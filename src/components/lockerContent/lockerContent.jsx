@@ -1,10 +1,11 @@
 import styles from "./lockerContent.module.css";
 import Image from "next/image";
-import { useLockerDocuments } from "@/hooks/useLockerDocuments";
+import { useMyLockerDocuments } from "@/hooks/useMyLockerDocuments";
 import LoadingApp from "@/components/loadingApp/loadingApp";
 
 export default function LockerContent({ setView }) {
-  const { documents, loading, error } = useLockerDocuments();
+  const { documents, loading, error } =
+  useMyLockerDocuments();
 
   if (loading) {
     return <section className={styles.boxVacio}>
