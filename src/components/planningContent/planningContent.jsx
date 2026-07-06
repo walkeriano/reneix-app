@@ -1,6 +1,6 @@
 import styles from "./planningContent.module.css";
 import Image from "next/image";
-import CalendarComp from "@/components/calendarComp/calendarComp"
+import CalendarComp from "@/components/calendarComp/calendarComp";
 
 export default function PlanningContent({ setView }) {
   return (
@@ -12,10 +12,10 @@ export default function PlanningContent({ setView }) {
         </div>
         <div onClick={() => setView("buttons")} className={styles.textCheck}>
           <Image src="/out.svg" width={20} height={17} alt="Video Icon" />
-          <p>Volver great</p>
+          <p>Volver</p>
         </div>
       </section>
-      <CalendarComp/>
+      <section className={styles.calendarSection}></section>
     </section>
   );
 }

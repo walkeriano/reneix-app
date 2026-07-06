@@ -4,14 +4,15 @@ import { useMyLockerDocuments } from "@/hooks/useMyLockerDocuments";
 import LoadingApp from "@/components/loadingApp/loadingApp";
 
 export default function LockerContent({ setView }) {
-  const { documents, loading, error } =
-  useMyLockerDocuments();
+  const { documents, loading, error } = useMyLockerDocuments();
 
   if (loading) {
-    return <section className={styles.boxVacio}>
-        <LoadingApp/>
+    return (
+      <section className={styles.boxVacio}>
+        <LoadingApp />
         <p>Cargando...</p>
-      </section>;
+      </section>
+    );
   }
 
   if (error) {
@@ -20,14 +21,26 @@ export default function LockerContent({ setView }) {
 
   if (!documents.length) {
     return (
-      <section className={styles.boxVacio}>
-        <Image
-            src="/vacio.svg"
-            width={70}
-            height={70}
-            alt="Video Icon"
-          />
-        <p>No hay publicaciones disponibles.</p>
+      <section className={styles.lockerEmpty}>
+        <section className={styles.titleSection}>
+          <div className={styles.textBox}>
+            <Image
+              src="/locker-img.png"
+              width={25}
+              height={23}
+              alt="Video Icon"
+            />
+            <p>Locker</p>
+          </div>
+          <div onClick={() => setView("buttons")} className={styles.textCheck}>
+            <Image src="/out.svg" width={20} height={17} alt="Video Icon" />
+            <p>Volver</p>
+          </div>
+        </section>
+        <section className={styles.boxVacio}>
+          <Image src="/vacio.svg" width={70} height={70} alt="Video Icon" />
+          <p>No hay publicaciones disponibles.</p>
+        </section>
       </section>
     );
   }
@@ -45,12 +58,7 @@ export default function LockerContent({ setView }) {
           <p>Locker</p>
         </div>
         <div onClick={() => setView("buttons")} className={styles.textCheck}>
-          <Image
-            src="/out.svg"
-            width={20}
-            height={17}
-            alt="Video Icon"
-          />
+          <Image src="/out.svg" width={20} height={17} alt="Video Icon" />
           <p>Volver</p>
         </div>
       </section>
