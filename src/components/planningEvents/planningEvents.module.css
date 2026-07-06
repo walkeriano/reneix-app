@@ -72,13 +72,13 @@
 
 .planItem {
   border: 1px solid grey;
-  min-width: 60%;
+  min-width: 75%;
   padding-right: 20px;
-  height: 45px;
+  height: 65px;
   border-radius: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
 }
 
@@ -87,18 +87,16 @@
 }
 
 .planItemInfo {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   gap: 3px;
-  border: 1px solid red;
 }
 
 .planItemInfo h4 {
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: blue;
   letter-spacing: 0.5px;
@@ -118,16 +116,39 @@
   overflow: hidden;
 }
 
-
-.planDates{
-    width: 90%;
-    border: 1px solid red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.planDates {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.planDetail{
-    border: 1px solid red;
+.planInfo{
+  background: linear-gradient(90deg, rgba(0, 0, 255, 0.5) 0%, rgba(0, 0, 255, 0.8) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+  border-radius: 20px;
+  gap: 5px;
+}
+
+.planInfo h4{
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.planInfo p{
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 80%;
+  letter-spacing: 1px;
+  font-weight: 600;
+  line-height: 1.2;
 }
