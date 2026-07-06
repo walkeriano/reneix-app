@@ -1,4 +1,3 @@
-"use client";
 import styles from "./calendarComp.module.css";
 import React, { useState, useContext } from "react";
 import AuthContext from "@/state/auth/auth-context";

@@ -41,7 +41,7 @@ export default function PlanningEvents() {
                   </div>
                 ))
               ) : (
-                <p>No hay pacientes asignados.</p>
+                <h3>No hay pacientes asignados.</h3>
               )}
             </section>
           </section>
