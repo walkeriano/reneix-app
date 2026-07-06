@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -5,6 +7,7 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
+
 import { db } from "../../firebase-config";
 
 export default function usePlanningList() {
@@ -15,22 +18,46 @@ export default function usePlanningList() {
   const getPlans = async () => {
     try {
       setLoading(true);
+      setError(null);
 
       const planningRef = collection(db, "planning");
 
-      const q = query(planningRef, orderBy("startDate", "asc"));
+      const q = query(
+        planningRef,
+        orderBy("startDate", "asc")
+      );
 
       const snapshot = await getDocs(q);
 
-      const planning = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const planning = await Promise.all(
+        snapshot.docs.map(async (planDoc) => {
+          // Obtener usuarios de la subcolección
+          const usersSnapshot = await getDocs(
+            collection(
+              db,
+              "planning",
+              planDoc.id,
+              "usuarios"
+            )
+          );
+
+          const usuarios = usersSnapshot.docs.map((userDoc) => ({
+            id: userDoc.id,
+            ...userDoc.data(),
+          }));
+
+          return {
+            id: planDoc.id,
+            ...planDoc.data(),
+            usuarios,
+          };
+        })
+      );
 
       setPlans(planning);
     } catch (err) {
       console.error(err);
-      setError(err);
+      setError(err.message || "Error al obtener las sesiones");
     } finally {
       setLoading(false);
     }

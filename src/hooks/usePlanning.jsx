@@ -1,38 +1,83 @@
+"use client";
+
 import { useState } from "react";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+
 import { db } from "../../firebase-config";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function usePlanning() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-const savePlans = async (plans) => {
-  console.log("🔥 savePlans recibido:", plans);
+  const savePlans = async (plans, selectedUsers) => {
+    try {
+      setLoading(true);
+      setError(null);
 
-  setLoading(true);
+      await Promise.all(
+        plans.map(async (plan) => {
+          // Crear la sesión
+          const docRef = await addDoc(
+            collection(db, "planning"),
+            {
+              ...plan,
+              status: "scheduled",
+              createdAt: serverTimestamp(),
+            }
+          );
 
-  try {
-    const promises = plans.map((plan, index) => {
-      console.log(`📤 Guardando plan ${index + 1}:`, plan);
+          // Guardar los usuarios asignados
+          await Promise.all(
+            selectedUsers.map((user) =>
+              setDoc(
+                doc(
+                  db,
+                  "planning",
+                  docRef.id,
+                  "usuarios",
+                  user.id
+                ),
+                {
+                  permitido: true,
+                  nombreUsuario: user.nombreUsuario,
+                  email: user.email,
+                  imagenPerfil: user.imagenPerfil || null,
+                  assignedAt: serverTimestamp(),
+                }
+              )
+            )
+          );
+        })
+      );
 
-      return addDoc(collection(db, "planning"), {
-        ...plan,
-        status: "scheduled",
-        createdAt: serverTimestamp(),
-      });
-    });
+      return {
+        success: true,
+      };
+    } catch (err) {
+      console.error(err);
 
-    const result = await Promise.all(promises);
+      setError(
+        err.message ||
+          "Error al guardar la planificación."
+      );
 
-    console.log("✅ Firestore response:", result);
+      return {
+        success: false,
+      };
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  } catch (err) {
-    console.error("❌ Error en Firestore:", err);
-  } finally {
-    setLoading(false);
-    console.log("🔚 Loading terminado");
-  }
-};
-
-  return { savePlans, loading, error };
+  return {
+    savePlans,
+    loading,
+    error,
+  };
 }

@@ -10,56 +10,70 @@ import usePlanning from "../../hooks/usePlanning";
 
 export default function CreateCalendar() {
   const [selectedRanges, setSelectedRanges] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
   const [title, setTitle] = useState("");
+
   const { savePlans, loading } = usePlanning();
 
-  const handleSelect = (selectInfo) => {
-    console.log("📅 Selección detectada:", selectInfo);
+  const handleToggleUser = (user) => {
+    setSelectedUsers((prev) => {
+      const exists = prev.some((item) => item.id === user.id);
 
+      if (exists) {
+        return prev.filter((item) => item.id !== user.id);
+      }
+
+      return [...prev, user];
+    });
+  };
+
+  const handleSelect = (selectInfo) => {
     const newRange = {
       title: title || "Sesión",
       startDate: selectInfo.start.toISOString(),
       endDate: selectInfo.end.toISOString(),
     };
 
-    console.log("➕ Nuevo rango generado:", newRange);
-
-    setSelectedRanges((prev) => {
-      const updated = [...prev, newRange];
-      console.log("📦 Estado actualizado selectedRanges:", updated);
-      return updated;
-    });
+    setSelectedRanges((prev) => [...prev, newRange]);
   };
 
   const handleSave = async () => {
-    console.log("🚀 Click en guardar");
-
-    console.log("📦 selectedRanges actual:", selectedRanges);
-
     if (selectedRanges.length === 0) {
-      console.warn("⚠️ No hay rangos para guardar");
+      alert("Debes seleccionar al menos una fecha.");
+      return;
+    }
+
+    if (selectedUsers.length === 0) {
+      alert("Debes seleccionar al menos un usuario.");
       return;
     }
 
     try {
-      console.log("⏳ Llamando savePlans...");
-      await savePlans(selectedRanges);
-      console.log("✅ savePlans completado");
+      const result = await savePlans(selectedRanges, selectedUsers);
 
-      setSelectedRanges([]);
-      console.log("🧹 Estado limpiado");
+      if (result?.success) {
+        setSelectedRanges([]);
+        setSelectedUsers([]);
+        setTitle("");
+      }
     } catch (error) {
-      console.error("❌ Error en handleSave:", error);
+      console.error(error);
     }
   };
 
   return (
     <section className={styles.containerCreateCalendar}>
-      <UsersActions />
+      <UsersActions
+        selectedUsers={selectedUsers}
+        onToggleUser={handleToggleUser}
+      />
+
       <section className={styles.titleSection}>
         <p>Registrar fecha de sesiones</p>
+
         <Image src="/arrow-bottom.svg" width={10} height={12} alt="icon-menu" />
       </section>
+
       <div className={styles.adminCalendar}>
         <label>
           <input
@@ -69,6 +83,7 @@ export default function CreateCalendar() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
+
         <section className={styles.containerCalendar}>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -86,6 +101,7 @@ export default function CreateCalendar() {
           className={styles.sendDatos}
         >
           {loading ? "Guardando..." : "Guardar sesiones"}
+
           <Image src="/send.svg" width={20} height={20} alt="icon-menu" />
         </button>
       </div>

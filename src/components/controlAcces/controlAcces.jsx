@@ -27,12 +27,27 @@ export default function ControlAcces() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setError("");
 
     try {
-      await login(formData.email, formData.password);
+      const user = await login(
+        formData.email,
+        formData.password
+      );
 
-      router.push("/");
+      if (user?.userType === "admin") {
+        router.replace("/dashboard-admin-locker");
+        return;
+      }
+
+      if (user?.userType === "client") {
+        router.replace("/");
+        return;
+      }
+
+      // Si por alguna razón no existe el tipo de usuario
+      router.replace("/");
     } catch (err) {
       setError(err.message);
     }
@@ -40,7 +55,13 @@ export default function ControlAcces() {
 
   return (
     <section className={styles.containerAcces}>
-      <Image src="/logo-re.png" width={160} height={160} alt="logo-fanixera" />
+      <Image
+        src="/logo-re.png"
+        width={160}
+        height={160}
+        alt="logo-fanixera"
+      />
+
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -52,6 +73,7 @@ export default function ControlAcces() {
             required
           />
         </label>
+
         <label>
           <input
             type="password"
@@ -62,10 +84,26 @@ export default function ControlAcces() {
             required
           />
         </label>
-        <button type="submit" className={styles.sendDatos}>
+
+        <button
+          type="submit"
+          className={styles.sendDatos}
+        >
           Acceder
-          <Image src="/send-white.svg" width={20} height={20} alt="icon-menu" />
+
+          <Image
+            src="/send-white.svg"
+            width={20}
+            height={20}
+            alt="icon-menu"
+          />
         </button>
+
+        {error && (
+          <p className={styles.error}>
+            {error}
+          </p>
+        )}
       </form>
     </section>
   );
