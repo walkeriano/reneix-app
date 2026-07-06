@@ -53,12 +53,11 @@
   letter-spacing: 0.5px;
 }
 
-
-.sendDatos{
-  background: linear-gradient(#4a12a9,#A14371);
+.sendDatos {
+  background: linear-gradient(#4a12a9, #a14371);
   border: none;
   height: 40px;
-  width: auto;
+  width: 100%;
   padding: 0px 15px;
   border-radius: 50px;
   font-size: 1rem;
@@ -69,4 +68,45 @@
   color: white;
   font-weight: 600;
   gap: 10px;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.titleSection h2 {
+  color: #4a12a9;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.titleSection p {
+  color: #a14371;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.logoShield {
+  padding: 6px 9px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: linear-gradient(#4a12a9, #a14371);
+}
+
+
+.logoShield p{
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  line-height: 0;
 }

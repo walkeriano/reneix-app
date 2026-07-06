@@ -53,8 +53,9 @@ export default function HeroApp() {
               <div className={styles.userInfo}>
                 <h4>{user?.nombreUsuario}</h4>
                 <p>
-                  {user?.ciudad}, {user?.pais}
+                  {user?.ciudad}, 
                 </p>
+                <p>{user?.pais}</p>
               </div>
               <div className={styles.userPerfil}>
                 <Image

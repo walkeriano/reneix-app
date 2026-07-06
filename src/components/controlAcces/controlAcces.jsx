@@ -31,10 +31,7 @@ export default function ControlAcces() {
     setError("");
 
     try {
-      const user = await login(
-        formData.email,
-        formData.password
-      );
+      const user = await login(formData.email, formData.password);
 
       if (user?.userType === "admin") {
         router.replace("/dashboard-admin-locker");
@@ -55,13 +52,14 @@ export default function ControlAcces() {
 
   return (
     <section className={styles.containerAcces}>
-      <Image
-        src="/logo-re.png"
-        width={160}
-        height={160}
-        alt="logo-fanixera"
-      />
-
+      <Image src="/logo-re.png" width={160} height={160} alt="logo-fanixera" />
+      <section className={styles.titleSection}>
+        <h2>Ingresar credenciales</h2>
+        <div className={styles.logoShield}>
+          <Image src="/shield.svg" width={15} height={17} alt="logo-fanixera" />
+          <p>Portal protegido</p>
+        </div>
+      </section>
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -85,25 +83,12 @@ export default function ControlAcces() {
           />
         </label>
 
-        <button
-          type="submit"
-          className={styles.sendDatos}
-        >
+        <button type="submit" className={styles.sendDatos}>
           Acceder
-
-          <Image
-            src="/send-white.svg"
-            width={20}
-            height={20}
-            alt="icon-menu"
-          />
+          <Image src="/send-white.svg" width={20} height={20} alt="icon-menu" />
         </button>
 
-        {error && (
-          <p className={styles.error}>
-            {error}
-          </p>
-        )}
+        {error && <p className={styles.error}>{error}</p>}
       </form>
     </section>
   );
