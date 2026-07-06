@@ -31,16 +31,16 @@
   color: white;
 }
 
-.welcomeContainer h1{
-    font-family: var(--font-le-jardin-secret);
-    font-size: 3.5rem;
-    line-height: 0.5;
+.welcomeContainer h1 {
+  font-family: var(--font-le-jardin-secret);
+  font-size: 3.5rem;
+  line-height: 0.5;
 }
 
-.welcomeContainer h2{
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 0.5px;
+.welcomeContainer h2 {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 .sliderFunctionsContainer {
@@ -52,6 +52,21 @@
   overflow-y: scroll;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.sliderFunctionsContainer::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
+
+.sliderFunctionsContainer::-webkit-scrollbar-thumb {
+  height: 0px;
+  width: 0px;
+}
+
+.sliderFunctionsContainer::-webkit-scrollbar-track {
+  height: 0px;
+  width: 0px;
 }
 
 .optionItem {
@@ -68,6 +83,11 @@
   padding: 20px;
   gap: 15px;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.optionItem:hover {
+  background-color: rgb(240, 240, 240);
 }
 
 .optionItem h3 {
@@ -77,26 +97,34 @@
   width: 80%;
   letter-spacing: 0.5px;
   color: #a14371;
-    text-decoration: none;
+  text-decoration: none;
 }
 
+.nextCita {
+  border: 1px solid rgb(128, 128, 128);
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+  color: rgb(128, 128, 128);
+  background-color: rgba(55, 55, 55, 0.076);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.nextCita{
-    border: 1px solid rgb(128, 128, 128);
-    padding: 5px 10px;
-    border-radius: 20px;
-    margin-top: 20px;
-    color: rgb(128, 128, 128);
-    background-color: rgba(55, 55, 55, 0.076);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
+.nextCita p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+@media (min-width: 850px) {
+  .sliderFunctionsContainer {
     justify-content: center;
-}
+  }
 
-.nextCita p{
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 0.5px;
+  .optionItem {
+    min-width: 20%;
+  }
 }
-

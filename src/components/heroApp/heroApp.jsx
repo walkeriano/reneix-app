@@ -109,6 +109,9 @@ export default function HeroApp() {
       <div className={styles.heroImageContainer}>
         <Image src="/movil-bg.jpg" fill={true} alt="Hero Image" />
       </div>
+      <div className={styles.heroImageContainerTwo}>
+        <Image src="/image-angels.jpg" fill={true} alt="Hero Image" />
+      </div>
     </section>
   );
 }

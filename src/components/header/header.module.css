@@ -96,3 +96,10 @@
 .containerClosing .btnClosing:nth-child(2){
     background-color: transparent;
 }
+
+
+@media (min-width: 850px) {
+  .logoContainer{
+    width: 200px;
+}
+}
