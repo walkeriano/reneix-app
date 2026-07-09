@@ -35,7 +35,7 @@
 .containerAcces form label {
   width: 100%;
   min-height: 40px;
-  border: 1px solid #4a12a9;
+  border: 1px solid #a14371;
   border-radius: 50px;
   position: relative;
   display: flex;
@@ -68,6 +68,15 @@
   text-align: center;
 }
 
+.containerAcces form label:hover {
+  border: 1px solid #4a12a9;
+}
+
+.containerAcces form label img {
+  position: absolute;
+  right: 20px;
+}
+
 .sendDatos {
   background: linear-gradient(#4a12a9, #a14371);
   border: none;
@@ -83,6 +92,7 @@
   color: white;
   font-weight: 600;
   gap: 10px;
+  cursor: pointer;
 }
 
 .titleSection {
@@ -139,9 +149,46 @@
   line-height: 0;
 }
 
-@media (min-width: 850px) {
+.errorBox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorBox p{
+  color: red;
+  font-size: 0.9rem;
+  letter-spacing: 0.7px;
+}
+
+@media (min-width: 750px) {
   .containerAcces form {
     width: 35%;
-    max-width: 400px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .containerAcces form {
+    width: 60%;
+    flex-direction: row;
+  }
+
+  .sendDatos {
+    width: auto;
+    padding: 0px 25px;
+  }
+
+  .titleSection {
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .logoShield {
+    padding: 6px 15px;
+  }
+
+  .logoShield p {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
   }
 }

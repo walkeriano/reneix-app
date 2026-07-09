@@ -70,8 +70,13 @@ export default function ControlAcces() {
             onChange={handleChange}
             required
           />
+          <Image
+            src="/person-two.svg"
+            alt="img-perfil"
+            width={20}
+            height={20}
+          />
         </label>
-
         <label>
           <input
             type="password"
@@ -81,14 +86,22 @@ export default function ControlAcces() {
             onChange={handleChange}
             required
           />
+          <Image
+            src="/password-two.svg"
+            alt="img-perfil"
+            width={22}
+            height={22}
+          />
         </label>
-
         <button type="submit" className={styles.sendDatos}>
           Acceder
           <Image src="/send-white.svg" width={20} height={20} alt="icon-menu" />
         </button>
-
-        {error && <p className={styles.error}>{error}</p>}
+        {error && (
+          <section className={styles.errorBox}>
+            <p className={styles.error}>{error}</p>
+          </section>
+        )}
       </form>
     </section>
   );
