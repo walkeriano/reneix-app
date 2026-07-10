@@ -17,32 +17,34 @@ export default function PlanningEvents() {
     <section className={styles.planningEvents}>
       {plans.map((plan) => (
         <article className={styles.planDetail} key={plan.id}>
-          <section className={styles.planTitle}>
-            <p>Nombre Sesión</p>
-            <h3>{plan.title}</h3>
-          </section>
-          <section className={styles.planPatients}>
-            <p>Pacientes Vinculados</p>
-            <section className={styles.planPatientsList}>
-              {plan.usuarios?.length ? (
-                plan.usuarios.map((usuario) => (
-                  <div key={usuario.id} className={styles.planItem}>
-                    <Image
-                      src={usuario.imagenPerfil || "/image-angels.png"}
-                      alt={usuario.nombreUsuario}
-                      width={65}
-                      height={65}
-                    />
+          <section className={styles.containerFlexPlan}>
+            <section className={styles.planTitle}>
+              <p>Nombre Sesión</p>
+              <h3>{plan.title}</h3>
+            </section>
+            <section className={styles.planPatients}>
+              <p>Pacientes Vinculados</p>
+              <section className={styles.planPatientsList}>
+                {plan.usuarios?.length ? (
+                  plan.usuarios.map((usuario) => (
+                    <div key={usuario.id} className={styles.planItem}>
+                      <Image
+                        src={usuario.imagenPerfil || "/image-angels.png"}
+                        alt={usuario.nombreUsuario}
+                        width={65}
+                        height={65}
+                      />
 
-                    <div className={styles.planItemInfo}>
-                      <h4>{usuario.nombreUsuario}</h4>
-                      <p>{usuario.email}</p>
+                      <div className={styles.planItemInfo}>
+                        <h4>{usuario.nombreUsuario}</h4>
+                        <p>{usuario.email}</p>
+                      </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                <h3>No hay pacientes asignados.</h3>
-              )}
+                  ))
+                ) : (
+                  <h3>No hay pacientes asignados.</h3>
+                )}
+              </section>
             </section>
           </section>
           <section className={styles.planDates}>

@@ -21,6 +21,15 @@
   gap: 20px;
 }
 
+.containerFlexPlan {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 .planTitle {
   width: 90%;
   display: flex;
@@ -160,4 +169,43 @@
   letter-spacing: 1px;
   font-weight: 600;
   line-height: 1.2;
+}
+
+@media (min-width: 1000px) {
+  .planDetail {
+    width: 80%;
+    padding: 25px 25px;
+    flex-direction: row;
+    border-radius: 25px;
+  }
+
+  .planDates {
+    width: 50%;
+    gap: 20px;
+  }
+
+  .containerFlexPlan {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+.planPatients {
+  width: 100%;
+}
+
+  .planItem {
+  border: 1px solid #a14371;
+  min-width: 45%;
+  padding-right: 20px;
+  height: 65px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
 }

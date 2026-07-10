@@ -30,7 +30,7 @@ export default function HistoryUsers() {
   return (
     <section className={styles.allHistoryUsers}>
       <section className={styles.titleSectionOne}>
-        <p>Publicaciones realizadas</p>
+        <p>Usuario Publicados</p>
         <Image src="/arrow-bottom.svg" width={10} height={12} alt="icon-menu" />
       </section>
       <section className={styles.listUsers}>
@@ -47,7 +47,11 @@ export default function HistoryUsers() {
               <section className={styles.nameCard}>
                 <h3>{user.nombreUsuario}</h3>
                 <section className={styles.flexButtons}>
-                  <p>{user.codigoAcceso}</p>
+                  <div className={styles.flexNameCard}>
+                    <h4>Credencial</h4>
+                    <p>{user.codigoAcceso}</p>
+                  </div>
+
                   <button
                     type="button"
                     onClick={() => copyCode(user.codigoAcceso, user.id)}
@@ -74,6 +78,7 @@ export default function HistoryUsers() {
                 <p>{user.direccion}</p>
                 <p>{user.ciudad}</p>
                 <p>{user.pais}</p>
+                <p>{user.postal}</p>
               </section>
               <button className={styles.btnDelete}>Desactivar</button>
             </section>

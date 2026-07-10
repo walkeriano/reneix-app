@@ -14,6 +14,7 @@ export default function FormRegistro() {
     ciudad: "",
     pais: "",
     direccion: "",
+    postal: "",
     movil: "",
     imagenPerfil: "",
     codigoAcceso: "",
@@ -48,6 +49,7 @@ export default function FormRegistro() {
         ciudad: formData.ciudad,
         pais: formData.pais,
         direccion: formData.direccion,
+        postal: formData.postal,
         movil: formData.movil,
         imagenPerfil: formData.imagenPerfil,
         codigoAcceso: formData.codigoAcceso,
@@ -61,6 +63,7 @@ export default function FormRegistro() {
         ciudad: "",
         pais: "",
         direccion: "",
+        postal: "",
         movil: "",
         imagenPerfil: "",
         codigoAcceso: "",
@@ -154,6 +157,22 @@ export default function FormRegistro() {
             name="direccion"
             placeholder="Dirección..."
             value={formData.direccion}
+            onChange={handleChange}
+            required
+          />
+          <Image
+            src="/direction-icon.svg"
+            alt="img-perfil"
+            width={21}
+            height={21}
+          />
+        </label>
+        <label>
+          <input
+            type="text"
+            name="postal"
+            placeholder="Código postal..."
+            value={formData.postal}
             onChange={handleChange}
             required
           />

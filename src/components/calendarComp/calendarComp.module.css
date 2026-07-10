@@ -37,3 +37,20 @@
   letter-spacing: 0.5px;
   width: 100%;
 }
+
+
+@media (min-width: 1000px) {
+  .boxName {
+    margin-top: 150px;
+    width: 65%;
+  }
+
+  .boxName h2 {
+    font-size: 3.2rem;
+  }
+
+  .boxName p {
+    font-size: 1.2rem;
+    letter-spacing: 1.2px;
+  }
+}

@@ -28,7 +28,7 @@ export default function Header({ user }) {
       <section className={styles.navContainer}>
         <button>
           <Image
-            src={user?.imagenPerfil || "/default-profile.png"}
+            src={user?.imagenPerfil || "/users-icon.svg"}
             width={50}
             height={50}
             alt="icon-menu"

@@ -36,6 +36,21 @@
   overflow-y: auto;
 }
 
+
+
+.listUsers::-webkit-scrollbar {
+  height: 0px;
+}
+
+.listUsers::-webkit-scrollbar-thumb {
+  height: 0px;
+}
+
+.listUsers::-webkit-scrollbar-track {
+  height: 0px;
+}
+
+
 .cardUsers {
   min-width: 60%;
   height: auto;
@@ -117,16 +132,32 @@
   margin-bottom: 15px;
 }
 
-.flexButtons p {
+.flexNameCard{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+}
+
+.flexNameCard p {
   color: white;
-  width: 50%;
+  width: 100%;
   text-align: left;
   white-space: nowrap; /* Evita que el texto salte de línea */
   overflow: hidden; /* Oculta el texto que sobresale */
   text-overflow: ellipsis;
   font-size: 1.6rem;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-weight: 600;
+}
+
+.flexNameCard h4{
+  color: white;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 
 .flexButtons button {
@@ -141,6 +172,8 @@
   border: none;
 }
 
+
+
 .btnDelete {
   width: 80%;
   height: 45px;
@@ -152,4 +185,13 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.8rem;
+}
+
+
+
+@media (min-width: 1000px){
+  .cardUsers {
+  min-width: 20%;
+
+}
 }
