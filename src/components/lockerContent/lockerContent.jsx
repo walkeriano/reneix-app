@@ -62,33 +62,35 @@ export default function LockerContent({ setView }) {
           <p>Volver</p>
         </div>
       </section>
-      {documents.map((doc) => (
-        <section key={doc.id} className={styles.listItemsLocker}>
-          <section className={styles.headerItem}>
-            <div className={styles.headerInfo}>
-              <h3>Angels Córcoles</h3>
-              <p>3:00 pm</p>
-            </div>
-            <div className={styles.headerImage}>
-              <Image src="/image-angels.png" fill={true} alt="Locker Image" />
-            </div>
+      <section className={styles.overflowList}>
+        {documents.map((doc) => (
+          <section key={doc.id} className={styles.listItemsLocker}>
+            <section className={styles.headerItem}>
+              <div className={styles.headerInfo}>
+                <h3>Angels Córcoles</h3>
+                <p>3:00 pm</p>
+              </div>
+              <div className={styles.headerImage}>
+                <Image src="/image-angels.png" fill={true} alt="Locker Image" />
+              </div>
+            </section>
+            <section className={styles.textLocker}>
+              <p>{doc.mensaje}</p>
+            </section>
+            <section className={styles.buttonsLocker}>
+              <a href={doc.url} target="_blank" rel="noopner noreferrer">
+                <p>Abrir archivo</p>
+                <Image
+                  src="/clip.svg"
+                  width={30}
+                  height={20}
+                  alt="Locker Image"
+                />
+              </a>
+            </section>
           </section>
-          <section className={styles.textLocker}>
-            <p>{doc.mensaje}</p>
-          </section>
-          <section className={styles.buttonsLocker}>
-            <a href={doc.url} target="_blank" rel="noopner noreferrer">
-              <p>Abrir archivo</p>
-              <Image
-                src="/clip.svg"
-                width={30}
-                height={20}
-                alt="Locker Image"
-              />
-            </a>
-          </section>
-        </section>
-      ))}
+        ))}
+      </section>
       <div className={styles.boxing}></div>
     </section>
   );
