@@ -37,11 +37,9 @@ export default function FormRegistro() {
 
     try {
       // 1. Crear usuario en Firebase Auth
-
       const firebaseUser = await register(formData.email, formData.password);
 
       // 2. Crear documento en Firestore
-
       await createUsuario({
         uid: firebaseUser.uid,
         email: firebaseUser.email,
@@ -56,8 +54,37 @@ export default function FormRegistro() {
         linkVideollamada: formData.linkVideollamada,
       });
 
-      // 3. Limpiar formulario
+      // 3. Enviar correo al paciente
+      try {
+        const response = await fetch("/api/send-patient-mail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nombreUsuario: formData.nombreUsuario,
+            email: formData.email,
+            password: formData.password,
+            codigoAcceso: formData.codigoAcceso,
+            linkVideollamada: formData.linkVideollamada,
+          }),
+        });
 
+        if (!response.ok) {
+          throw new Error("No se pudo enviar el correo.");
+        }
+
+        console.log("Correo enviado correctamente.");
+      } catch (mailError) {
+        console.error("Error enviando correo:", mailError);
+
+        // El usuario ya fue registrado, solo avisamos.
+        alert(
+          "El paciente fue registrado correctamente, pero no se pudo enviar el correo automáticamente.",
+        );
+      }
+
+      // 4. Limpiar formulario
       setFormData({
         nombreUsuario: "",
         ciudad: "",
@@ -72,10 +99,9 @@ export default function FormRegistro() {
         password: "",
       });
 
-      console.log("Usuario registrado");
+      alert("Paciente registrado correctamente.");
     } catch (err) {
       console.error(err);
-
       alert(err.message);
     }
   };
