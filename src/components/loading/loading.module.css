@@ -55,6 +55,7 @@
 .loader {
   height: 7px;
   width: 50%;
+  max-width: 320px;
   --c: no-repeat linear-gradient(#b62fff, #a14371);
   background: var(--c), var(--c), white;
   background-size: 60% 100%;

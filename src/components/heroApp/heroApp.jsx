@@ -8,7 +8,7 @@ import Header from "@/components/header/header";
 import SliderFunctions from "@/components/sliderFunctions/sliderFunctions";
 import NavBar from "@/components/navBar/navBar";
 import LockerContent from "@/components/lockerContent/lockerContent";
-import PlanningContent from "@/components/planningContent/planningContent"
+import PlanningContent from "@/components/planningContent/planningContent";
 
 export default function HeroApp() {
   const [activeSlide, setActiveSlide] = useState(true);
@@ -37,43 +37,42 @@ export default function HeroApp() {
             <Image src="/x-mark.svg" width={15} height={15} alt="Video Icon" />
           </button>
           <section className={styles.mentoriaContent}>
-            <section className={styles.mentoriaPage}>
-              <Image
-                src="/icon-one.svg"
-                width={60}
-                height={60}
-                alt="Mentoria Image"
-              />
-              <div className={styles.mentInfo}>
-                <h3>Mentoria rehaz tu vida</h3>
-                <p>Detalles</p>
-              </div>
-            </section>
-            <section className={styles.mentoriaUser}>
-              <div className={styles.userInfo}>
-                <h4>{user?.nombreUsuario}</h4>
-                <p>
-                  {user?.ciudad}, 
-                </p>
-                <p>{user?.pais}</p>
-              </div>
-              <div className={styles.userPerfil}>
+            <section className={styles.mentoriaFlex}>
+              <section className={styles.mentoriaPage}>
                 <Image
-                  src={user?.imagenPerfil}
-                  fill={true}
+                  src="/icon-one.svg"
+                  width={60}
+                  height={60}
                   alt="Mentoria Image"
                 />
-              </div>
+                <div className={styles.mentInfo}>
+                  <h3>Mentoria rehaz tu vida</h3>
+                  <p>Detalles</p>
+                </div>
+              </section>
+              <section className={styles.mentoriaUser}>
+                <div className={styles.userInfo}>
+                  <h4>{user?.nombreUsuario}</h4>
+                  <div className={styles.userBoxFlex}>
+                    <p>{user?.ciudad},</p>
+                    <p>{user?.pais}</p>
+                  </div>
+                </div>
+                <div className={styles.userPerfil}>
+                  <Image
+                    src={user?.imagenPerfil}
+                    fill={true}
+                    alt="Mentoria Image"
+                  />
+                </div>
+              </section>
             </section>
-            {view === "locker" && (
-              <LockerContent setView={setView} />
-            )}
-            {view === "planning" && (
-              <PlanningContent setView={setView} />
-            )}
+
+            {view === "locker" && <LockerContent setView={setView} />}
+            {view === "planning" && <PlanningContent setView={setView} />}
             {view === "buttons" && (
               <section className={styles.mentoriaButtons}>
-                <button  onClick={() => setView("planning")}>
+                <button onClick={() => setView("planning")}>
                   <Image
                     src="/calendar.svg"
                     width={35}
@@ -91,7 +90,7 @@ export default function HeroApp() {
                   />
                   <p>Ir a consulta</p>
                 </Link>
-                <button  onClick={() => setView("locker")}>
+                <button onClick={() => setView("locker")}>
                   <Image
                     src="/locker-img.png"
                     width={40}
