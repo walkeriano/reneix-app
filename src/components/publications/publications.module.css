@@ -7,3 +7,9 @@
   gap: 20px;
   margin-top: 20px;
 }
+
+@media (min-width: 1000px) {
+  .containerPublications {
+    width: 90%;
+  }
+}

@@ -62,6 +62,13 @@
   justify-content: center;
   border-radius: 20px;
   gap: 15px;
+  cursor: pointer;
+}
+
+.itemUser input {
+  cursor: pointer;
+  width: 20px;
+  aspect-ratio: 1;
 }
 
 .imgPerfil {
@@ -112,4 +119,18 @@
   white-space: nowrap; /* Evita que el texto salte de línea */
   overflow: hidden; /* Oculta la parte del texto que sobresale */
   text-overflow: ellipsis;
+}
+
+@media (min-width: 1000px) {
+  .usersContainer {
+    width: 100%;
+  }
+
+  .itemUser {
+    min-width: 12%;
+  }
+
+  .titleSection {
+    width: 95%;
+  }
 }

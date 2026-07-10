@@ -44,3 +44,11 @@
 .navItem.active{
     background-color: white;
 }
+
+@media (min-width: 1000px){
+  .containerNav{
+    width: 65%;
+    gap:20px;
+    padding: 0px 25px 0px 0px;
+}
+}
