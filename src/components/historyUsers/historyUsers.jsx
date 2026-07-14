@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useUsers } from "@/hooks/useUsers";
 
 export default function HistoryUsers() {
-  const { users, loading, error } = useUsers();
+  const { users, loading, error, toggleVerified, deleteUser } = useUsers();
   const [copiedId, setCopiedId] = useState(null);
 
   const copyCode = async (codigo, userId) => {
@@ -80,7 +80,24 @@ export default function HistoryUsers() {
                 <p>{user.pais}</p>
                 <p>{user.postal}</p>
               </section>
-              <button className={styles.btnDelete}>Desactivar</button>
+              <button
+                className={styles.btnDelete}
+                onClick={() => toggleVerified(user.id, user.verified)}
+              >
+                {user.verified ? "Activar" : "Suspender"}
+              </button>
+              <button
+                className={styles.btnDeleteTwo}
+                onClick={async () => {
+                  const confirmDelete = window.confirm(
+                    `¿Deseas eliminar a ${user.nombreUsuario}?`,
+                  );
+                  if (!confirmDelete) return;
+                  await deleteUser(user.id);
+                }}
+              >
+                Eliminar
+              </button>
             </section>
           </section>
         ))}

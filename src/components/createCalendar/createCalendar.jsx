@@ -12,6 +12,7 @@ export default function CreateCalendar() {
   const [selectedRanges, setSelectedRanges] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [title, setTitle] = useState("");
+  const [linkVideollamada, setLinkVideollamada]  = useState("");
 
   const { savePlans, loading } = usePlanning();
 
@@ -29,7 +30,8 @@ export default function CreateCalendar() {
 
   const handleSelect = (selectInfo) => {
     const newRange = {
-      title: title || "Sesión",
+      title: title || "Sesion",
+      linkVideollamada: linkVideollamada || "LinkVideollamada",
       startDate: selectInfo.start.toISOString(),
       endDate: selectInfo.end.toISOString(),
     };
@@ -55,6 +57,7 @@ export default function CreateCalendar() {
         setSelectedRanges([]);
         setSelectedUsers([]);
         setTitle("");
+        setLinkVideollamada("");
       }
     } catch (error) {
       console.error(error);
@@ -70,7 +73,6 @@ export default function CreateCalendar() {
 
       <section className={styles.titleSection}>
         <p>Registrar fecha de sesiones</p>
-
         <Image src="/arrow-bottom.svg" width={10} height={12} alt="icon-menu" />
       </section>
 
@@ -81,6 +83,16 @@ export default function CreateCalendar() {
             placeholder="Nombre de la sesión"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          <input
+            type="url"
+            placeholder="Enlace de Videollamada..."
+            value={linkVideollamada}
+            onChange={(e) => setLinkVideollamada(e.target.value)}
+            required
           />
         </label>
 

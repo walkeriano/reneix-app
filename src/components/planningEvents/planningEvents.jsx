@@ -1,6 +1,7 @@
 import styles from "./planningEvents.module.css";
 import usePlanningList from "@/hooks/usePlanningList";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PlanningEvents() {
   const { plans, loading, error } = usePlanningList();
@@ -20,7 +21,13 @@ export default function PlanningEvents() {
           <section className={styles.containerFlexPlan}>
             <section className={styles.planTitle}>
               <p>Nombre Sesión</p>
-              <h3>{plan.title}</h3>
+              <h3>{plan?.title}</h3>
+            </section>
+            <section className={styles.planTitle}>
+              <p>Enlace Videollamada</p>
+              <a href={plan.linkVideollamada} target="_blank">
+                {plan?.linkVideollamada || "No hay enlace vinculado"}
+              </a>
             </section>
             <section className={styles.planPatients}>
               <p>Pacientes Vinculados</p>
@@ -29,15 +36,15 @@ export default function PlanningEvents() {
                   plan.usuarios.map((usuario) => (
                     <div key={usuario.id} className={styles.planItem}>
                       <Image
-                        src={usuario.imagenPerfil || "/image-angels.png"}
-                        alt={usuario.nombreUsuario}
+                        src={usuario?.imagenPerfil || "/image-angels.png"}
+                        alt={usuario?.nombreUsuario}
                         width={65}
                         height={65}
                       />
 
                       <div className={styles.planItemInfo}>
-                        <h4>{usuario.nombreUsuario}</h4>
-                        <p>{usuario.email}</p>
+                        <h4>{usuario?.nombreUsuario}</h4>
+                        <p>{usuario?.email}</p>
                       </div>
                     </div>
                   ))

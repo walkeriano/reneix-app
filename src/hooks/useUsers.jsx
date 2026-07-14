@@ -1,11 +1,13 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import {
   collection,
   onSnapshot,
   orderBy,
   query,
+  updateDoc,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
@@ -17,10 +19,7 @@ export function useUsers() {
 
   useEffect(() => {
     try {
-      const q = query(
-        collection(db, "usuarios"),
-        orderBy("createdAt", "desc")
-      );
+      const q = query(collection(db, "usuarios"), orderBy("createdAt", "desc"));
 
       const unsubscribe = onSnapshot(
         q,
@@ -37,7 +36,7 @@ export function useUsers() {
           console.error(err);
           setError(err.message);
           setLoading(false);
-        }
+        },
       );
 
       return () => unsubscribe();
@@ -49,9 +48,31 @@ export function useUsers() {
     }
   }, []);
 
+  const toggleVerified = async (id, verified) => {
+    try {
+      await updateDoc(doc(db, "usuarios", id), {
+        verified: !verified,
+      });
+    } catch (err) {
+      console.error("Error al actualizar el usuario:", err);
+      throw err;
+    }
+  };
+
+  const deleteUser = async (id) => {
+    try {
+      await deleteDoc(doc(db, "usuarios", id));
+    } catch (err) {
+      console.error("Error al eliminar el usuario:", err);
+      throw err;
+    }
+  };
+
   return {
     users,
     loading,
     error,
+    toggleVerified,
+    deleteUser,
   };
 }

@@ -185,8 +185,26 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.8rem;
+  cursor: pointer;
 }
 
+.btnDeleteTwo {
+  width: 80%;
+  height: 45px;
+  border-radius: 50px;
+  border: none;
+  background: rgb(188, 0, 0);
+  color: white;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btnDeleteTwo:hover, .btnDelete:hover{
+  filter: brightness(1.5);
+}
 
 
 @media (min-width: 1000px){
