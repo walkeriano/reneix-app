@@ -18,7 +18,6 @@ export default function FormRegistro() {
     movil: "",
     imagenPerfil: "",
     codigoAcceso: "",
-    linkVideollamada: "",
     email: "",
     password: "",
   });
@@ -51,7 +50,6 @@ export default function FormRegistro() {
         movil: formData.movil,
         imagenPerfil: formData.imagenPerfil,
         codigoAcceso: formData.codigoAcceso,
-        linkVideollamada: formData.linkVideollamada,
       });
 
       // 3. Enviar correo al paciente
@@ -66,7 +64,6 @@ export default function FormRegistro() {
             email: formData.email,
             password: formData.password,
             codigoAcceso: formData.codigoAcceso,
-            linkVideollamada: formData.linkVideollamada,
           }),
         });
 
@@ -94,7 +91,6 @@ export default function FormRegistro() {
         movil: "",
         imagenPerfil: "",
         codigoAcceso: "",
-        linkVideollamada: "",
         email: "",
         password: "",
       });
@@ -264,23 +260,6 @@ export default function FormRegistro() {
               }))
             }
           />
-        </section>
-        <section className={styles.generatorBoxTwo}>
-          <div className={styles.titleBox}>
-            <Image src="/vid-icon.svg" width={55} height={55} alt="icon-menu" />
-            <h3>Sesiones Virtuales</h3>
-            <h4>Enlace de videollamada</h4>
-          </div>
-          <label>
-            <input
-              type="url"
-              name="linkVideollamada"
-              placeholder="Pegar Enlace..."
-              value={formData.linkVideollamada}
-              onChange={handleChange}
-              required
-            />
-          </label>
         </section>
         <button className={styles.sendDatos} type="submit" disabled={loading}>
           {loading ? "Registrando..." : "Registrar"}

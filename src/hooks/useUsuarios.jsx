@@ -20,7 +20,6 @@ export function useUsuarios() {
     movil,
     imagenPerfil,
     codigoAcceso,
-    linkVideollamada,
     userType = "client",
   }) => {
     try {
@@ -38,7 +37,6 @@ export function useUsuarios() {
         movil,
         imagenPerfil,
         codigoAcceso,
-        linkVideollamada,
         userType,
         verified: false,
         createdAt: serverTimestamp(),
