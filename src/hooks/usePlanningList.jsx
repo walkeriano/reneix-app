@@ -24,37 +24,34 @@ export default function usePlanningList() {
 
       const planningRef = collection(db, "planning");
 
-      const q = query(
-        planningRef,
-        orderBy("startDate", "asc")
-      );
+      const q = query(planningRef, orderBy("createdAt", "desc"));
 
       const snapshot = await getDocs(q);
 
       const planning = await Promise.all(
-        snapshot.docs.map(async (planDoc) => {
-          // Obtener usuarios de la subcolección
-          const usersSnapshot = await getDocs(
-            collection(
-              db,
-              "planning",
-              planDoc.id,
-              "usuarios"
-            )
-          );
+  snapshot.docs.map(async (planDoc) => {
 
-          const usuarios = usersSnapshot.docs.map((userDoc) => ({
-            id: userDoc.id,
-            ...userDoc.data(),
-          }));
+    const usersSnapshot = await getDocs(
+      collection(
+        db,
+        "planning",
+        planDoc.id,
+        "usuarios"
+      )
+    );
 
-          return {
-            id: planDoc.id,
-            ...planDoc.data(),
-            usuarios,
-          };
-        })
-      );
+    const usuarios = usersSnapshot.docs.map((userDoc) => ({
+      id: userDoc.id,
+      ...userDoc.data(),
+    }));
+
+    return {
+      id: planDoc.id,
+      ...planDoc.data(),
+      usuarios,
+    };
+  })
+);
 
       setPlans(planning);
     } catch (err) {
@@ -71,16 +68,16 @@ export default function usePlanningList() {
   }, []);
 
   const deletePlan = async (id) => {
-  try {
-    await deleteDoc(doc(db, "planning", id));
+    try {
+      await deleteDoc(doc(db, "planning", id));
 
-    // Recargar la lista
-    await getPlans();
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
+      // Recargar la lista
+      await getPlans();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  };
 
   return {
     plans,

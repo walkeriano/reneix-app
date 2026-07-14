@@ -57,19 +57,42 @@ export default function PlanningEvents() {
           <section className={styles.planDates}>
             <p>Horarios y fechas</p>
             <div className={styles.planInfo}>
-              <h4>Inicio:</h4>
-              <p>{new Date(plan.startDate).toLocaleString()}</p>
+              <h4>Hora:</h4>
+              <div className={styles.flexTime}>
+                <Image src="/reloj.svg" alt="tiempo" width={25} height={30} />
+                <p>{plan.sessionHour}</p>
+              </div>
             </div>
             <div className={styles.planInfo}>
-              <h4>Final:</h4>
-              <p>{new Date(plan.endDate).toLocaleString()}</p>
+              <h4>Fechas:</h4>
+              <section className={styles.listDates}>
+                {plan.selectedDays?.length ? (
+                  plan.selectedDays.map((day) => (
+                    <div className={styles.flexMap} key={day}>
+                      <Image src="/cal.svg" alt="tiempo" width={25} height={30} />
+                      <h5>
+                        {new Date(day).toLocaleDateString("es-ES", {
+                          weekday: "long",
+                          day: "numeric",
+                          month: "long",
+                        })}
+                      </h5>
+                    </div>
+                  ))
+                ) : (
+                  <p>No hay fechas registradas.</p>
+                )}
+              </section>
             </div>
+
             <button
               onClick={async () => {
                 const confirmDelete = window.confirm(
                   `¿Eliminar la sesión "${plan.title}"?`,
                 );
+
                 if (!confirmDelete) return;
+
                 try {
                   await deletePlan(plan.id);
                 } catch {

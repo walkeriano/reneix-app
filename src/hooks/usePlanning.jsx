@@ -15,45 +15,47 @@ export default function usePlanning() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const savePlans = async (plans, selectedUsers) => {
+  const savePlans = async ({
+    title,
+    linkVideollamada,
+    sessionHour,
+    selectedDays,
+    usuarios,
+  }) => {
     try {
       setLoading(true);
       setError(null);
 
-      await Promise.all(
-        plans.map(async (plan) => {
-          // Crear la sesión
-          const docRef = await addDoc(
-            collection(db, "planning"),
-            {
-              ...plan,
-              status: "scheduled",
-              createdAt: serverTimestamp(),
-            }
-          );
+      // Crear el documento principal
+      const docRef = await addDoc(collection(db, "planning"), {
+        title,
+        linkVideollamada,
+        sessionHour,
+        selectedDays,
+        status: "scheduled",
+        createdAt: serverTimestamp(),
+      });
 
-          // Guardar los usuarios asignados
-          await Promise.all(
-            selectedUsers.map((user) =>
-              setDoc(
-                doc(
-                  db,
-                  "planning",
-                  docRef.id,
-                  "usuarios",
-                  user.id
-                ),
-                {
-                  permitido: true,
-                  nombreUsuario: user.nombreUsuario,
-                  email: user.email,
-                  imagenPerfil: user.imagenPerfil || null,
-                  assignedAt: serverTimestamp(),
-                }
-              )
-            )
-          );
-        })
+      // Guardar los usuarios asignados
+      await Promise.all(
+        usuarios.map((user) =>
+          setDoc(
+            doc(
+              db,
+              "planning",
+              docRef.id,
+              "usuarios",
+              user.id
+            ),
+            {
+              permitido: true,
+              nombreUsuario: user.nombreUsuario,
+              email: user.email,
+              imagenPerfil: user.imagenPerfil || null,
+              assignedAt: serverTimestamp(),
+            }
+          )
+        )
       );
 
       return {

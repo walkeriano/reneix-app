@@ -9,12 +9,12 @@ import interactionPlugin from "@fullcalendar/interaction";
 import usePlanning from "../../hooks/usePlanning";
 
 export default function CreateCalendar() {
+  const { savePlans, loading } = usePlanning();
   const [selectedRanges, setSelectedRanges] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [title, setTitle] = useState("");
-  const [linkVideollamada, setLinkVideollamada]  = useState("");
-
-  const { savePlans, loading } = usePlanning();
+  const [linkVideollamada, setLinkVideollamada] = useState("");
+  const [sessionHour, setSessionHour] = useState("17:00");
 
   const handleToggleUser = (user) => {
     setSelectedUsers((prev) => {
@@ -28,15 +28,18 @@ export default function CreateCalendar() {
     });
   };
 
-  const handleSelect = (selectInfo) => {
-    const newRange = {
-      title: title || "Sesion",
-      linkVideollamada: linkVideollamada || "LinkVideollamada",
-      startDate: selectInfo.start.toISOString(),
-      endDate: selectInfo.end.toISOString(),
-    };
+  const handleDateClick = (clickInfo) => {
+    const day = clickInfo.dateStr;
 
-    setSelectedRanges((prev) => [...prev, newRange]);
+    const exists = selectedRanges.includes(day);
+
+    if (exists) {
+      setSelectedRanges((prev) => prev.filter((item) => item !== day));
+
+      return;
+    }
+
+    setSelectedRanges((prev) => [...prev, day]);
   };
 
   const handleSave = async () => {
@@ -51,13 +54,20 @@ export default function CreateCalendar() {
     }
 
     try {
-      const result = await savePlans(selectedRanges, selectedUsers);
+      const result = await savePlans({
+        title,
+        linkVideollamada,
+        sessionHour,
+        selectedDays: selectedRanges,
+        usuarios: selectedUsers,
+      });
 
       if (result?.success) {
         setSelectedRanges([]);
         setSelectedUsers([]);
         setTitle("");
         setLinkVideollamada("");
+        setSessionHour("17:00");
       }
     } catch (error) {
       console.error(error);
@@ -70,12 +80,10 @@ export default function CreateCalendar() {
         selectedUsers={selectedUsers}
         onToggleUser={handleToggleUser}
       />
-
       <section className={styles.titleSection}>
         <p>Registrar fecha de sesiones</p>
         <Image src="/arrow-bottom.svg" width={10} height={12} alt="icon-menu" />
       </section>
-
       <div className={styles.adminCalendar}>
         <label>
           <input
@@ -95,15 +103,23 @@ export default function CreateCalendar() {
             required
           />
         </label>
-
+        <label>
+          <input
+            type="time"
+            value={sessionHour}
+            onChange={(e) => setSessionHour(e.target.value)}
+          />
+        </label>
         <section className={styles.containerCalendar}>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
             initialView="dayGridMonth"
-            selectable={true}
-            selectMirror={true}
-            select={handleSelect}
-            editable={true}
+            dateClick={handleDateClick}
+            events={selectedRanges.map((day) => ({
+              title: title || "Sesión",
+              start: day,
+              allDay: true,
+            }))}
           />
         </section>
 
