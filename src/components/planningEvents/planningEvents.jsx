@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function PlanningEvents() {
-  const { plans, loading, error } = usePlanningList();
+  const { plans, loading, error, deletePlan } = usePlanningList();
 
   if (loading) return <p>Cargando sesiones...</p>;
 
@@ -55,6 +55,7 @@ export default function PlanningEvents() {
             </section>
           </section>
           <section className={styles.planDates}>
+            <p>Horarios y fechas</p>
             <div className={styles.planInfo}>
               <h4>Inicio:</h4>
               <p>{new Date(plan.startDate).toLocaleString()}</p>
@@ -63,6 +64,21 @@ export default function PlanningEvents() {
               <h4>Final:</h4>
               <p>{new Date(plan.endDate).toLocaleString()}</p>
             </div>
+            <button
+              onClick={async () => {
+                const confirmDelete = window.confirm(
+                  `¿Eliminar la sesión "${plan.title}"?`,
+                );
+                if (!confirmDelete) return;
+                try {
+                  await deletePlan(plan.id);
+                } catch {
+                  alert("No se pudo eliminar la sesión.");
+                }
+              }}
+            >
+              Eliminar
+            </button>
           </section>
         </article>
       ))}

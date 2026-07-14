@@ -159,14 +159,42 @@
 }
 
 .planDates {
-  width: 90%;
+  width: 80%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
+}
+
+.planDates p {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #a14371;
+}
+
+.planDates button {
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-radius: 50px;
+  background-color: rgb(222, 0, 0);
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.planDates button:hover{
+  filter: brightness(1.5);
 }
 
 .planInfo {
+  width: 100%;
   background: linear-gradient(90deg, #4a12a9, #a14371);
   display: flex;
   flex-direction: column;
@@ -233,4 +261,24 @@
     gap: 10px;
     cursor: pointer;
   }
+
+  .planInfo {
+  flex-direction: row;
+  padding: 20px 0px;
+  border-radius: 20px;
+  gap: 5px;
+}
+
+.planInfo h4 {
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.planInfo p {
+
+  width: auto;
+}
 }

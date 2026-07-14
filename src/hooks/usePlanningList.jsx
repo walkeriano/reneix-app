@@ -6,6 +6,8 @@ import {
   getDocs,
   query,
   orderBy,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 
 import { db } from "../../firebase-config";
@@ -68,10 +70,23 @@ export default function usePlanningList() {
     getPlans();
   }, []);
 
+  const deletePlan = async (id) => {
+  try {
+    await deleteDoc(doc(db, "planning", id));
+
+    // Recargar la lista
+    await getPlans();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
   return {
     plans,
     loading,
     error,
     refreshPlans: getPlans,
+    deletePlan,
   };
 }
