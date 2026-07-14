@@ -94,22 +94,25 @@ export default function CreateCalendar() {
             required
           />
         </label>
-        <label>
-          <input
-            type="url"
-            placeholder="Enlace de Videollamada..."
-            value={linkVideollamada}
-            onChange={(e) => setLinkVideollamada(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          <input
-            type="time"
-            value={sessionHour}
-            onChange={(e) => setSessionHour(e.target.value)}
-          />
-        </label>
+        <section className={styles.flexTime}>
+          <label>
+            <input
+              type="url"
+              placeholder="Enlace de Videollamada..."
+              value={linkVideollamada}
+              onChange={(e) => setLinkVideollamada(e.target.value)}
+              required
+            />
+          </label>
+          <div>
+            <input
+              type="time"
+              value={sessionHour}
+              onChange={(e) => setSessionHour(e.target.value)}
+            />
+          </div>
+        </section>
+
         <section className={styles.containerCalendar}>
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
