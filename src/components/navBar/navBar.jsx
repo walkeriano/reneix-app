@@ -16,7 +16,7 @@ export default function NavBar() {
           href="https://wa.me/34639405634?text=Hola%20¿me%20brindas%20más%20información?"
           target="_blank"
         >
-          <Image src="/wss.svg" width={27} height={24} alt="Home Icon" />
+          <Image src="/wss.svg" width={23} height={24} alt="Home Icon" />
         </a>
       </section>
     </section>
