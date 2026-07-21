@@ -164,6 +164,7 @@
 
 .userBoxFlex {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
@@ -175,8 +176,8 @@
   font-size: 0.8rem;
   font-weight: 300;
   letter-spacing: 0.5px;
-  width: auto;
-  line-height: 1.2;
+  width: 100%;
+  line-height: 1;
   text-transform: capitalize;
 }
 

@@ -56,7 +56,7 @@ export default function HeroApp() {
                   <h4>{user?.nombreUsuario}</h4>
                   <div className={styles.userBoxFlex}>
                     <p>{user?.ciudad},</p>
-                    <p>{user?.pais}</p>
+                    <p>{user?.pais}.</p>
                   </div>
                 </div>
                 <div className={styles.userPerfil}>

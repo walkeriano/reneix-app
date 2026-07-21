@@ -15,14 +15,14 @@ export default function SliderFunctions({ setActiveSlide, planning }) {
         <h1>Bienvenida</h1>
         <h2>¿Qué retos tienes hoy?</h2>
       </section>
-      <section className={styles.nextCita}>
-        <p>Próxima sesión:</p>
-        <p>
-          {nextSession
-            ? `${nextSession.date} a las ${nextSession.hour} ${nextSession.period}`
-            : "Lo lograste!"}
-        </p>
-      </section>
+      {nextSession && (
+        <section className={styles.nextCita}>
+          <p>Próxima sesión:</p>
+          <p>
+            {nextSession.date} a las {nextSession.hour} {nextSession.period}
+          </p>
+        </section>
+      )}
       <section className={styles.sliderFunctionsContainer}>
         <section
           onClick={() => setActiveSlide(false)}
