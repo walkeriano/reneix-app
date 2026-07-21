@@ -17,7 +17,7 @@
   border-radius: 50px;
 }
 
-.navBarItems button {
+.navBarItems button, .navBarItems a {
   width: 45px;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -28,5 +28,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 

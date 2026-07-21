@@ -164,6 +164,10 @@
   letter-spacing: 0.6px;
 }
 
+.textCheck:hover {
+  filter: brightness(1.1);
+}
+
 .boxVacio {
   width: 100%;
   background-color: white;

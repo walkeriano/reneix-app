@@ -67,7 +67,6 @@ export default function HeroApp() {
                 </div>
               </section>
             </section>
-
             {view === "locker" && <LockerContent setView={setView} />}
             {view === "planning" && <PlanningContent setView={setView} />}
             {view === "buttons" && (

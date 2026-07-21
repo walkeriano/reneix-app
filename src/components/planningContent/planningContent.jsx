@@ -1,6 +1,5 @@
 import styles from "./planningContent.module.css";
 import Image from "next/image";
-import CalendarComp from "@/components/calendarComp/calendarComp";
 
 export default function PlanningContent({ setView }) {
   return (
