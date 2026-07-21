@@ -9,12 +9,13 @@ import SliderFunctions from "@/components/sliderFunctions/sliderFunctions";
 import NavBar from "@/components/navBar/navBar";
 import LockerContent from "@/components/lockerContent/lockerContent";
 import PlanningContent from "@/components/planningContent/planningContent";
+import useUserPlanning from "@/hooks/useUserPlanning";
 
 export default function HeroApp() {
   const [activeSlide, setActiveSlide] = useState(true);
   const [view, setView] = useState("buttons");
   const { user } = useContext(AuthContext);
-
+  const { planning, loading } = useUserPlanning();
   const router = useRouter();
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function HeroApp() {
     <section className={styles.heroContainer}>
       <Header user={user} />
       {activeSlide ? (
-        <SliderFunctions setActiveSlide={setActiveSlide} />
+        <SliderFunctions planning={planning} setActiveSlide={setActiveSlide} />
       ) : (
         <section className={styles.activeMentoria}>
           <button
@@ -68,7 +69,7 @@ export default function HeroApp() {
               </section>
             </section>
             {view === "locker" && <LockerContent setView={setView} />}
-            {view === "planning" && <PlanningContent setView={setView} />}
+            {view === "planning" && <PlanningContent planning={planning} setView={setView} />}
             {view === "buttons" && (
               <section className={styles.mentoriaButtons}>
                 <button onClick={() => setView("planning")}>

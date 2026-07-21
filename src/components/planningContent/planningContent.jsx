@@ -1,7 +1,7 @@
 import styles from "./planningContent.module.css";
 import Image from "next/image";
 
-export default function PlanningContent({ setView }) {
+export default function PlanningContent({ setView, planning }) {
   return (
     <section className={styles.lockerContent}>
       <section className={styles.titleSection}>
@@ -14,7 +14,9 @@ export default function PlanningContent({ setView }) {
           <p>Volver</p>
         </div>
       </section>
-      <section className={styles.calendarSection}></section>
+      <section className={styles.calendarSection}>
+        
+      </section>
     </section>
   );
 }

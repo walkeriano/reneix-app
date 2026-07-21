@@ -33,14 +33,14 @@
 
 .welcomeContainer h1 {
   font-family: var(--font-le-jardin-secret);
-  font-size: 3.5rem;
+  font-size: 3.7rem;
   line-height: 0.5;
 }
 
 .welcomeContainer h2 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .sliderFunctionsContainer {
@@ -102,21 +102,27 @@
 
 .nextCita {
   border: 1px solid rgb(128, 128, 128);
-  padding: 5px 10px;
-  border-radius: 20px;
+  padding: 8px 17px;
+  border-radius: 12px;
   margin-top: 20px;
-  color: rgb(128, 128, 128);
+  color: rgb(167, 167, 167);
   background-color: rgba(55, 55, 55, 0.076);
   backdrop-filter: blur(5px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 
 .nextCita p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.5px;
+}
+
+.nextCita p:nth-child(2){
+  font-weight: 500;
 }
 
 @media (min-width: 850px) {

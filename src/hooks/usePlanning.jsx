@@ -26,28 +26,27 @@ export default function usePlanning() {
       setLoading(true);
       setError(null);
 
-      // Crear el documento principal
+      // Array de IDs para consultas rápidas
+      const usuariosIds = usuarios.map((user) => user.id);
+
+      // Crear documento principal
       const docRef = await addDoc(collection(db, "planning"), {
         title,
         linkVideollamada,
         sessionHour,
         selectedDays,
+        usuariosIds,
         status: "scheduled",
         createdAt: serverTimestamp(),
       });
 
-      // Guardar los usuarios asignados
+      // Guardar información completa de cada usuario
       await Promise.all(
         usuarios.map((user) =>
           setDoc(
-            doc(
-              db,
-              "planning",
-              docRef.id,
-              "usuarios",
-              user.id
-            ),
+            doc(db, "planning", docRef.id, "usuarios", user.id),
             {
+              uid: user.id,
               permitido: true,
               nombreUsuario: user.nombreUsuario,
               email: user.email,
@@ -60,6 +59,7 @@ export default function usePlanning() {
 
       return {
         success: true,
+        planningId: docRef.id,
       };
     } catch (err) {
       console.error(err);

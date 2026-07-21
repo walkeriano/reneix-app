@@ -1,8 +1,14 @@
 import styles from "./sliderFunctions.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import getNextSession from "@/utils/getNextSession";
 
-export default function SliderFunctions({ setActiveSlide }) {
+export default function SliderFunctions({ setActiveSlide, planning }) {
+  const nextSession = getNextSession(
+    planning?.selectedDays,
+    planning?.sessionHour,
+  );
+
   return (
     <section className={styles.boxFunctionsContainer}>
       <section className={styles.welcomeContainer}>
@@ -10,7 +16,12 @@ export default function SliderFunctions({ setActiveSlide }) {
         <h2>¿Qué retos tienes hoy?</h2>
       </section>
       <section className={styles.nextCita}>
-        <p>Tu próxima cita es: 10:00 AM</p>
+        <p>Próxima sesión:</p>
+        <p>
+          {nextSession
+            ? `${nextSession.date} a las ${nextSession.hour} ${nextSession.period}`
+            : "Lo lograste!"}
+        </p>
       </section>
       <section className={styles.sliderFunctionsContainer}>
         <section
