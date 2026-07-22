@@ -83,7 +83,7 @@
   cursor: pointer;
 }
 
-.closeButton:hover img{
+.closeButton:hover img {
   transform: scale(1.2);
 }
 
@@ -157,9 +157,12 @@
   font-size: 1.9rem;
   color: #a14371;
   width: 100%;
-  line-height: 0.7;
+  line-height: 1;
   margin-bottom: 7px;
   text-transform: capitalize;
+  white-space: nowrap; /* Evita que el texto salte de línea */
+  overflow: hidden; /* Oculta el texto que sobresale del contenedor */
+  text-overflow: ellipsis;
 }
 
 .userBoxFlex {

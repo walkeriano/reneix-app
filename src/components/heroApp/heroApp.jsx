@@ -81,7 +81,7 @@ export default function HeroApp() {
                   />
                   <p>Planning</p>
                 </button>
-                <Link href={user?.linkVideollamada}>
+                <Link href="/">
                   <Image
                     src="/icon-call.png"
                     width={48}
