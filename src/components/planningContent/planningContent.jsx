@@ -32,7 +32,7 @@ export default function PlanningContent({ setView, planning }) {
           </section>
         )}
         <section className={styles.containerListDates}>
-          <div>Lista de sesiones</div>
+          <div className={styles.titleSubSection}>Lista de sesiones</div>
           <section className={styles.flexContainer}>
             {planning?.selectedDays?.map((day) => (
               <div key={day} className={styles.itemDate}>

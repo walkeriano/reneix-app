@@ -217,8 +217,7 @@
 }
 
 .containerListDates {
-  border: 1px solid red;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -226,23 +225,55 @@
   gap: 20px;
 }
 
+.titleSubSection{
+  width: 80%;
+  color: #4a12a9;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
 .flexContainer {
-  border: 1px solid red;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   overflow-x: auto;
   gap: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.flexContainer::-webkit-scrollbar {
+  background-color: rgba(255, 255, 255, 0.136);
+  width: 5px;
+}
+
+.flexContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.358);
+  border-radius: 50px;
+  border: 1px solid white;
+}
+
+.flexContainer::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .itemDate {
-  border: 1px solid red;
-  min-width: 55%;
+  border: 1px solid #4a12a9;
+  height: 60px;
+  min-width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   border-radius: 15px;
-  padding: 10px 25px;
+}
+
+.itemDate p{
+  width: auto;
+  color: #4a12a9;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
