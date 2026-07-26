@@ -174,8 +174,8 @@
   border-radius: 25px;
 }
 
-.nextCita{
-  background: linear-gradient(#4a12a9,#a14371);
+.nextCita {
+  background: linear-gradient(#4a12a9, #a14371);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -186,7 +186,7 @@
   padding: 15px 0px;
 }
 
-.nextCita h2{
+.nextCita h2 {
   color: white;
   width: 80%;
   text-align: center;
@@ -195,8 +195,8 @@
   letter-spacing: 1px;
 }
 
-.nextCita p{
-    color: white;
+.nextCita p {
+  color: white;
   width: 80%;
   text-align: center;
   font-size: 1rem;
@@ -204,7 +204,7 @@
   letter-spacing: 0.5px;
 }
 
-.nextCita a{
+.nextCita a {
   background-color: rgba(255, 255, 255, 0.127);
   color: white;
   padding: 10px 20px;
@@ -216,7 +216,7 @@
   border: 1px solid rgba(255, 255, 255, 0.266);
 }
 
-.containerListDates{
+.containerListDates {
   border: 1px solid red;
   width: 80%;
   display: flex;
@@ -226,10 +226,23 @@
   gap: 20px;
 }
 
-.flexContainer{
+.flexContainer {
   border: 1px solid red;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  gap: 20px;
+}
+
+.itemDate {
+  border: 1px solid red;
+  min-width: 55%;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 10px;
+  border-radius: 15px;
+  padding: 10px 25px;
 }

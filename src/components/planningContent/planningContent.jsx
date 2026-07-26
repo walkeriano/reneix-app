@@ -35,9 +35,9 @@ export default function PlanningContent({ setView, planning }) {
           <div>Lista de sesiones</div>
           <section className={styles.flexContainer}>
             {planning?.selectedDays?.map((day) => (
-              <div key={day}>
-                <p>{day}</p>
+              <div key={day} className={styles.itemDate}>
                 <Image src="/calendar.svg" width={25} height={23} alt="Video Icon" />
+                <p>{day}</p>
               </div>
             ))}
           </section>
