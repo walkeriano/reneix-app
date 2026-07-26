@@ -277,3 +277,38 @@
   font-weight: 500;
   letter-spacing: 1px;
 }
+
+
+
+
+
+@media (min-width: 1000px){
+
+.nextCita {
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 20px 20px;
+}
+
+.nextCita h2 {
+  width: auto;
+}
+
+.nextCita p {
+  width: auto;
+}
+
+.titleSubSection{
+  width: 95%;
+  text-align: center;
+}
+
+.itemDate{
+  min-width: 30%;
+}
+
+}
+
