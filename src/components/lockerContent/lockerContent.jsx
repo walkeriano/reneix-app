@@ -67,8 +67,8 @@ export default function LockerContent({ setView }) {
           <section key={doc.id} className={styles.listItemsLocker}>
             <section className={styles.headerItem}>
               <div className={styles.headerInfo}>
-                <h3>Angels Córcoles</h3>
-                <p>3:00 pm</p>
+                <h3>Àngels Córcoles</h3>
+                <p>{doc.createdAt.toDate().toLocaleTimeString("es-ES")}</p>
               </div>
               <div className={styles.headerImage}>
                 <Image src="/image-angels.png" fill={true} alt="Locker Image" />

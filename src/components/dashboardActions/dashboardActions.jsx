@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import AuthContext from "@/state/auth/auth-context";
 import styles from "./dashboardActions.module.css";
 import Header from "../header/header";
@@ -10,6 +11,23 @@ import HistorialPublications from "../historialPublications/historialPublication
 export default function DashboardActions() {
   const { user } = useContext(AuthContext);
   const [activeSection, setActiveSection] = useState("publications");
+  const router = useRouter();
+
+  useEffect(() => {
+    // Usuario no autenticado
+    if (!user) {
+      router.replace("/sesion-usuario");
+      return;
+    }
+
+    // Usuario autenticado pero no es administrador
+    if (user.userType !== "admin") {
+      router.replace("/");
+      return;
+    }
+
+    // Si llega hasta aquí, es admin y puede permanecer en la página.
+  }, [user, router]);
 
   return (
     <section className={styles.bgDashboard}>
