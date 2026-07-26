@@ -20,8 +20,8 @@ const leJardinSecret = localFont({
 });
 
 export const metadata = {
-  title: "Reneix App - Rehaz tu vida",
-  description: "Reneix App - Rehaz tu vida",
+  title: "Reneix App - Àngels Córcoles",
+  description: "Reneix App - Àngels Córcoles",
 };
 
 export default function RootLayout({ children }) {
