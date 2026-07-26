@@ -203,7 +203,7 @@
   gap: 20px;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 850px) {
   .lockerContent {
     width: 100%;
     gap: 20px;
@@ -251,5 +251,10 @@
 
   .boxing {
     height: 0px;
+  }
+
+  .lockerEmpty {
+    margin-top: 20px;
+    width: 100%;
   }
 }
