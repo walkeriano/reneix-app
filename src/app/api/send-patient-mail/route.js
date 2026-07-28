@@ -12,7 +12,7 @@ export async function POST(request) {
     await resend.emails.send({
       from: process.env.MAIL_FROM,
       to: email,
-      subject: "Bienvenida a Rehaz tu vida",
+      subject: "Reneix App - Mentoría de Rehaz tu vida",
 
       html: `
       <h2>Hola ${nombreUsuario}</h2>
