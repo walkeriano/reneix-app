@@ -7,7 +7,7 @@ export async function POST(request) {
   try {
     const body = await request.json();
 
-    const { nombreUsuario, email, codigoAcceso, linkVideollamada, movil, direccion, pais } = body;
+    const { nombreUsuario, email, codigoAcceso, movil, direccion, pais } = body;
 
     await resend.emails.send({
       from: process.env.MAIL_FROM,
