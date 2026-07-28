@@ -30,8 +30,8 @@ export async function POST(request) {
       <p><b>Código de acceso:</b> ${codigoAcceso}</p>
       <hr>
       <p><b>Acceso Reneix App:</b></p>
-      <a href="/angelscorcoles.com/sesion-usuario">
-        angelscorcoles.com
+      <a href="https://www.angelscorcoles.com/">
+        angelscorcoles.com/sesion-usuario
       </a>
       <br><br>
       <p>Puedes iniciar sesión cuando desees.</p>

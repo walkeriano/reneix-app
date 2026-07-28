@@ -64,6 +64,10 @@ export default function FormRegistro() {
             email: formData.email,
             password: formData.password,
             codigoAcceso: formData.codigoAcceso,
+            ciudad: formData.ciudad,
+            pais: formData.pais,
+            movil: formData.movil,
+            direccion: formData.direccion,
           }),
         });
 
